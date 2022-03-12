@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class ResourceNotFoundException extends RuntimeException {
 
-    public ResourceNotFoundException(UUID id) {
+    public ResourceNotFoundException(Long id) {
         super("ID " + id + " does not exist in database!");
     }
 }

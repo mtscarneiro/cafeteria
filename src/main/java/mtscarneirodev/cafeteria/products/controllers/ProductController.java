@@ -30,7 +30,7 @@ public class ProductController {
 
     // localhost:8080/api/products/{UUID}
     @GetMapping("/{id}")
-    public ResponseEntity<Product> readByID(@PathVariable UUID id) {
+    public ResponseEntity<Product> readByID(@PathVariable Long id) {
         Product product = productService.readAProductByItsID(id);
 
         return ResponseEntity.ok().body(product);

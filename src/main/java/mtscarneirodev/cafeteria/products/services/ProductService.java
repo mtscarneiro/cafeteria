@@ -22,7 +22,7 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Product readAProductByItsID(UUID id) {
+    public Product readAProductByItsID(Long id) {
         Optional<Product> product = productRepository.findById(id);
 
         return product.orElseThrow(() -> new ResourceNotFoundException(id));
@@ -32,7 +32,7 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public void deleteProduct(UUID id) {
+    public void deleteProduct(Long id) {
         try {
             productRepository.deleteById(id);
         } catch (RuntimeException e) {
@@ -44,9 +44,10 @@ public class ProductService {
         oldProduct.setName(newProduct.getName());
         oldProduct.setDescription(newProduct.getDescription());
         oldProduct.setPrice(newProduct.getPrice());
+        oldProduct.setImageUrl(newProduct.getImageUrl());
     }
 
-    public Product updateProduct(UUID id, Product newProduct) {
+    public Product updateProduct(Long id, Product newProduct) {
         Product oldProduct = productRepository.getById(id);
         updateProductData(oldProduct, newProduct);
 
